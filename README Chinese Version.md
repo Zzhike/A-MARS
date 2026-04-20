@@ -368,16 +368,6 @@ python llms.py --debug
 
 本项目仅供**学习和研究使用**。  
 DeepSeek API 的使用须遵守其[服务条款](https://deepseek.com/terms)。  
-提供的 MOF 数据必须遵守原始数据源的许可证。
-
----
-
-## 🤝 贡献
-
-欢迎贡献！请：
-1. Fork 本仓库
-2. 创建功能分支
-3. 提交清晰的 Pull Request
 
 ---
 
