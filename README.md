@@ -429,15 +429,6 @@ Contributions are welcome! Please:
 
 ---
 
-## 📝 Version History
-
-| Version | Date | Changes |
-|---------|------|---------|
-| 1.0.0 | 2024 | Initial release with CLI and Web interfaces |
-| 1.1.0 | 2024 | Added bilingual support and FAQ system |
-| 1.2.0 | 2024 | Enhanced compound query and filtering |
-
----
 
 ## ⭐ Star Us
 
