@@ -43,7 +43,7 @@ A-MARS is an intelligent adsorption material analysis system based on MOF (Metal
 ### 📁 Local Database Support
 - **Multi-Gas Support**: Separate Excel files for different gases
 - **Auto-Detection**: Automatic gas alias recognition
-- **Flexible Schema**: Required columns (CSD, lgN) + optional columns (LCD, PLD, VSA, Density, φ, Diffusivity)
+- **Flexible Schema**: Required columns (CSD, lgN, LCD, PLD, VSA, Density, φ, Diffusivity, No.)
 
 ---
 
@@ -126,50 +126,19 @@ set DEEPSEEK_API_KEY="your-api-key-here"     # Windows
 |--------|----------|-------------|
 | CSD | ✅ Yes | Crystal structure identifier |
 | lgN | ✅ Yes | Log of adsorption capacity (mol/kg) |
-| LCD | ❌ No | Largest cavity diameter (Å) |
-| PLD | ❌ No | Pore limiting diameter (Å) |
-| VSA | ❌ No | Void surface area (m²/g) |
-| Density | ❌ No | Material density (g/cm³) |
-| φ | ❌ No | Porosity |
-| Diffusivity | ❌ No | Diffusion coefficient (cm²/s) |
-| No. | ❌ No | Material serial number |
+| LCD | ✅ Yes | Largest cavity diameter (Å) |
+| PLD | ✅ Yes | Pore limiting diameter (Å) |
+| VSA | ✅ Yes | Void surface area (m²/g) |
+| Density | ✅ Yes | Material density (g/cm³) |
+| φ | ✅ Yes | Porosity |
+| Diffusivity | ✅ Yes | Diffusion coefficient (cm²/s) |
+| No. | ✅ Yes | Material serial number |
 
 ---
 
 ## 🚀 Usage
 
-### Method 1: Command Line Interface (CLI)
-
-```bash
-python MARS.py
-```
-
-**Interactive Flow:**
-```
-Please select language:
-1. Chinese
-2. English
-Choice (1/2): 2
-
-MOF Expert System Started
-Please select mode:
-1. Query Mode
-2. Expert Mode
-Enter 'exit' to quit
-
-Please select mode (1/2): 1
-Entered query mode
-
-Please enter query condition (enter 'back' to switch mode):
-> HCHO
-```
-
-**Navigation Commands:**
-- `exit` - Exit the program
-- `back` - Return to mode selection
-- `1` or `2` - Select mode
-
-### Method 2: Web Interface (Gradio)
+### Web Interface (Gradio)
 
 ```bash
 python llms.py
@@ -201,7 +170,7 @@ python llms.py
 | `lgN max` | Highest adsorption capacity | MOF with maximum lgN |
 | `Density min` | Lowest density | Lightest MOF materials |
 | `LCD > 20 AND VSA > 500` | Compound condition | MOFs meeting both criteria |
-| `筛选 VSA > 800` | Filter previous results | Refined result set |
+| `Filter VSA > 800` | Filter previous results | Refined result set |
 
 ### Expert Mode Examples
 
@@ -210,24 +179,25 @@ python llms.py
 | `What is MOF?` | English | Basic concept explanation |
 | `How to select MOF for gas adsorption?` | English | Selection criteria and strategies |
 | `什么是突破曲线？` | Chinese | Breakthrough curve explanation |
-| `MOF vs Zeolite advantages` | English | Comparative analysis |
+| `MOF vs Traditional adsorbents advantages` | Chinese | Comparative analysis |
 | `How to improve MOF stability?` | English | Design strategies |
 
 ### Advanced Query Examples
 
 ```python
 # Gas queries with aliases
-"甲醛"           # Chinese name for HCHO
-"ETHANOL"       # Alternative name for C2H5OH
-"n-BUTANE"      # Alternative name for n-C4H10
+"HCHO"           # Standard name
+"Formaldehyde"   # English name
+"甲醛"           # Chinese name
+"ETHANOL"        # English alias
 
 # Numerical queries
-"φ > 0.5"       # Porosity greater than 0.5
-"PLD between 5 and 10"  # Range query (parsed as two conditions)
+"φ > 0.5"        # Porosity greater than 0.5
+"PLD between 5 and 10"  # Range query
 
 # Extreme value queries
-"最大lgN"        # Maximum lgN (Chinese)
-"最小Density"    # Minimum density (Chinese)
+"max lgN"        # Maximum adsorption capacity
+"min Density"    # Minimum density
 ```
 
 ---
@@ -264,7 +234,7 @@ The system currently supports the following gases with their aliases:
 
 ### Adding a New Gas
 
-1. **Prepare Excel file** with required columns (CSD, lgN)
+1. **Prepare Excel file** with required columns (CSD, lgN, LCD, PLD, VSA, Density, φ, Diffusivity, No.)
 2. **Save to database folder**: `database/NEWGAS.xlsx`
 3. **Update GAS_NAME_MAPPING** in `MARS.py`:
 
@@ -315,14 +285,14 @@ database_path = "your/custom/path/to/database"
 
 ## ❓ Frequently Asked Questions
 
-### 1. Error: "数据库路径不存在" / "Database path does not exist"
+### 1. Error: "Database path does not exist"
 
 **Solution**: 
 - Verify the database folder exists at `D:/all/database`
 - Modify the path in `MARS.py` or `llms.py` to match your system
 - Ensure the folder contains at least one `.xlsx` file
 
-### 2. Error: "找不到气体数据文件" / "Gas data file not found"
+### 2. Error: "Gas data file not found"
 
 **Solution**:
 - Check file naming: must be `GASNAME.xlsx` (uppercase)
@@ -351,7 +321,7 @@ database_path = "your/custom/path/to/database"
 - Check field names match Excel column names (case-sensitive)
 - Verify filter values are within data range
 - Try broader conditions first, then narrow down
-- Use `筛选` command to filter previous results
+- Use `Filter` command to filter previous results
 
 ### 6. Gradio interface doesn't launch
 
@@ -378,7 +348,7 @@ database_path = "your/custom/path/to/database"
 
 ---
 
-## 🔧 Troubleshooting Commands
+## 🔧 Debugging Commands
 
 ```bash
 # Check Python version
@@ -386,9 +356,6 @@ python --version
 
 # Verify installed packages
 pip list | findstr "pandas openai gradio"
-
-# Test database folder
-python -c "import os; print(os.listdir('D:/all/database'))"
 
 # Run with debug output
 python llms.py --debug
@@ -399,17 +366,7 @@ python llms.py --debug
 ## 📄 License
 
 This project is for **learning and research purposes only**.  
-Usage of the DeepSeek API is subject to its [Terms of Service](https://deepseek.com/terms).  
-The MOF data provided must comply with original data sources' licenses.
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please:
-1. Fork the repository
-2. Create a feature branch
-3. Submit a pull request with clear description
+Usage of the DeepSeek API is subject to its [Terms of Service](https://deepseek.com/terms).
 
 ---
 
@@ -428,11 +385,15 @@ Contributions are welcome! Please:
 
 ---
 
-
 ## ⭐ Star Us
 
 If you find this project useful, please give it a star on GitHub!
 
 ```
 
-This complete README is ready to be copied directly into your GitHub repository. It includes all necessary sections, formatting, badges, tables, code blocks, and emojis for better readability. Just copy everything from the first line to the last and paste it into your `README.md` file.
+This updated English README reflects all the changes you made to the Chinese version, including:
+- Changed all columns to required (✅ Yes) in the database preparation table
+- Removed the CLI usage section (keeping only Web Interface)
+- Removed the test database folder command from debugging section
+- Updated the acknowledgments section
+- Maintained consistent formatting and structure throughout
