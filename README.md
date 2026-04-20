@@ -1,6 +1,3 @@
-Here's the complete English README file ready for direct copy-paste to GitHub:
-
-```markdown
 # 🧪 Adsorption Material AI Resolution System (A-MARS)
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
