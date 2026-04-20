@@ -219,12 +219,6 @@ python llms.py
 | **n-C4H10** | 正丁烷、n-Butane |
 | **n-C5H12** | 正戊烷、n-Pentane |
 | **n-C6H14** | 正己烷、n-Hexane |
-| **NH3** | 氨气、Ammonia |
-| **CO2** | 二氧化碳、Carbon dioxide |
-| **CH4** | 甲烷、Methane |
-| **H2** | 氢气、Hydrogen |
-| **N2** | 氮气、Nitrogen |
-| **O2** | 氧气、Oxygen |
 
 > **注意**：要添加新气体，只需将 Excel 文件放入 `database/` 文件夹，并在 `MARS.py` 的 `GAS_NAME_MAPPING` 字典中添加别名即可。
 
