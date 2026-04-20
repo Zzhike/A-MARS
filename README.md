@@ -30,3 +30,11 @@ It supports gas adsorption performance queries, MOF material screening, expert k
 ---
 
 ## 🗂️ Project Structure
+├── MARS.py # MOF Expert System core logic
+├── llms.py # Gradio Web interface launcher
+├── faq_config.py # Preset FAQ knowledge base (optional)
+├── database/ # Gas data folder (user-provided)
+│ ├── HCHO.xlsx
+│ ├── C7H16FO2P.xlsx
+│ └── ...
+└── README.md # Project documentation
