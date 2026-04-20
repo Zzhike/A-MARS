@@ -219,12 +219,6 @@ The system currently supports the following gases with their aliases:
 | **n-C4H10** | n-Butane, 正丁烷 |
 | **n-C5H12** | n-Pentane, 正戊烷 |
 | **n-C6H14** | n-Hexane, 正己烷 |
-| **NH3** | Ammonia, 氨气 |
-| **CO2** | Carbon dioxide, 二氧化碳 |
-| **CH4** | Methane, 甲烷 |
-| **H2** | Hydrogen, 氢气 |
-| **N2** | Nitrogen, 氮气 |
-| **O2** | Oxygen, 氧气 |
 
 > **Note**: To add new gases, simply place an Excel file in the `database/` folder and add aliases to the `GAS_NAME_MAPPING` dictionary in `MARS.py`.
 
