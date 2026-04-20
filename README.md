@@ -388,12 +388,3 @@ Usage of the DeepSeek API is subject to its [Terms of Service](https://deepseek.
 ## ⭐ Star Us
 
 If you find this project useful, please give it a star on GitHub!
-
-```
-
-This updated English README reflects all the changes you made to the Chinese version, including:
-- Changed all columns to required (✅ Yes) in the database preparation table
-- Removed the CLI usage section (keeping only Web Interface)
-- Removed the test database folder command from debugging section
-- Updated the acknowledgments section
-- Maintained consistent formatting and structure throughout
