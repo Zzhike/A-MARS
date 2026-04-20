@@ -425,7 +425,6 @@ Contributions are welcome! Please:
 
 - **DeepSeek** for providing the LLM API
 - **Gradio** for the web interface framework
-- **MOF research community** for data standards and methodologies
 
 ---
 
