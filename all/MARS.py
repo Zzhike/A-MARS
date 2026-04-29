@@ -518,7 +518,7 @@ class MOFExpertSystem:
         
         if image_url:
             payload = {
-                "model": "deepseek-chat",
+                "model": "deepseek-v4-flash",
                 "messages": [{
                     "role": "user",
                     "content": [
@@ -534,7 +534,7 @@ class MOFExpertSystem:
             }
         else:
             payload = {
-                "model": "deepseek-chat",
+                "model": "deepseek-v4-flash",
                 "messages": [{"role": "user", "content": prompt}],
                 "stream": True,
                 "response_format": {"type": "text"}
